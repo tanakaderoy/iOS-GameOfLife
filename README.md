@@ -19,6 +19,6 @@ For this implementation, use a toroidal grid.  A torus is the mathematical abstr
 
 3. Timers: Implement timer events so that when the simulation is on, new Game-of-Life cell generations are calculated and displayed, at regular timed intervals with no user intervention. Timer events should not be generated when the simulation is off.
 
-4. Custom UI Interaction (part of the controller): When the simulation is off, allow the user to set up or change the cell state. Tapping will toggle the tapped-on cell. Panning will toggle the first cell where the pan started, and that resulting cell state will become the â€œbrushâ€ (On mode or Off mode) used for the duration of the pan gesture, regardless of the current state of the remaining affected cells.
+4. Custom UI Interaction: When the simulation is off, allow the user to set up or change the cell state. Tapping will toggle the tapped-on cell.
 
 
