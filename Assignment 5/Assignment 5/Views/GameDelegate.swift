@@ -9,5 +9,5 @@
 import Foundation
 
 protocol GameDelegate {
-    func tappedItemAtIndex(_ index: Int)
+    func cellTappedItemAtX(_ x: Int, andY y: Int)
 }

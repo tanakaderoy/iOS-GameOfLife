@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0BA7572239D4A300BDEB5D /* GameDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0BA7562239D4A300BDEB5D /* GameDataSource.swift */; };
 		3F627A072238675600B01E41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F627A062238675600B01E41 /* AppDelegate.swift */; };
 		3F627A092238675600B01E41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F627A082238675600B01E41 /* ViewController.swift */; };
 		3F627A0C2238675600B01E41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F627A0A2238675600B01E41 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F0BA7562239D4A300BDEB5D /* GameDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDataSource.swift; sourceTree = "<group>"; };
 		3F627A032238675600B01E41 /* Assignment 5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Assignment 5.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F627A062238675600B01E41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F627A082238675600B01E41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,6 +41,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F0BA7552239D46A00BDEB5D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3F627A1D223877BD00B01E41 /* GameDelegate.swift */,
+				3F627A1B223869A400B01E41 /* GameBoardView.swift */,
+				3F0BA7562239D4A300BDEB5D /* GameDataSource.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		3F6279FA2238675600B01E41 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +70,7 @@
 		3F627A052238675600B01E41 /* Assignment 5 */ = {
 			isa = PBXGroup;
 			children = (
+				3F0BA7552239D46A00BDEB5D /* Views */,
 				3F627A1A223868B500B01E41 /* Extra Files */,
 				3F627A19223868AD00B01E41 /* Models */,
 				3F627A182238689700B01E41 /* ViewControllers */,
@@ -71,8 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				3F627A082238675600B01E41 /* ViewController.swift */,
-				3F627A1B223869A400B01E41 /* GameBoardView.swift */,
-				3F627A1D223877BD00B01E41 /* GameDelegate.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -167,6 +178,7 @@
 			files = (
 				3F627A092238675600B01E41 /* ViewController.swift in Sources */,
 				3F627A072238675600B01E41 /* AppDelegate.swift in Sources */,
+				3F0BA7572239D4A300BDEB5D /* GameDataSource.swift in Sources */,
 				3F627A1E223877BD00B01E41 /* GameDelegate.swift in Sources */,
 				3F627A1C223869A400B01E41 /* GameBoardView.swift in Sources */,
 			);
