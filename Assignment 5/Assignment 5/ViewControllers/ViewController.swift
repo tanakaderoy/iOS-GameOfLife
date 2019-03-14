@@ -16,7 +16,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         data = Array(repeating: (Array(repeating: 0, count: 24)), count: 24)
-        
+        data[0][0] = 1
+        data[23][23] = 1
+        data[0][1] = 1
         
         gameBoard.delegate = self
         gameBoard.dataSource = self
@@ -44,13 +46,19 @@ extension ViewController: GameDelegate, GameDataSource{
         print("cell tapped at : (\(x), \(y))")
         
         
+        if data[x][y] == 0 {
+            data[x][y] = 1
+            
+        
+        
+        }else{
+            data[x][y] = 0
+        }
         gameBoard.setNeedsDisplay()
-        
-        
-    }
     
    
     
     
+}
 }
 
