@@ -50,17 +50,25 @@ class LifeSim {
             }
         }
 
-        
+        return copy
 
     }
     func numOfNeighbors(states: [[State]], x: Int, y: Int) -> Int {
         let stateCopy = duplicateBoard()
         var neighbors = 0
-        for x1 in -1...1{
-            for y1 in -1...1{
+        for x1 in x-1...x+1{
+            for y1 in x-1...x+1{
                 
                 let checkX = states.torodialIndex(index: (x1))
                 let checkY = states.torodialIndex(index: (y1))
+                if checkX == x1 && checkY == y1{
+                    
+                }else{
+                if stateCopy[x][y] == .Living {
+                    neighbors += 1
+                    
+                    }
+                }
             }
         }
         return neighbors
@@ -73,12 +81,12 @@ class LifeSim {
   */
     
     func evolveCell(x:Int, y:Int) {
-        var neighbors = numOfNeighbors(x: x, y: y)
+        let neighbors = numOfNeighbors(states: states, x: x, y: y)
         if states[x][y] == .Living && (neighbors < 2 || neighbors > 3){
             toggleStateForXY(x: x, y: y)
         }
         if states[x][y] == .Dead && neighbors == 3 {
-            <#code#>
+            toggleStateForXY(x: x, y: y)
         }
         
     }
