@@ -36,6 +36,9 @@ class GameBoardView: UIView {
         }
     }
     
+    
+    
+    
     func drawGrid() {
         let controlSize = self.bounds.size.width < self.bounds.size.height ? self.bounds.size.width : self.bounds.size.height
         let cellSize = controlSize / CGFloat(xyGridSize)
@@ -86,6 +89,16 @@ class GameBoardView: UIView {
         
         return CGRect(x: cellSize * CGFloat(x), y: cellSize * CGFloat(y), width: cellSize, height: cellSize)
         
+    }
+    func colorForCell(state: State) -> UIColor {
+        switch state {
+        case .Dead:
+            return UIColor.blue
+        case .Living:
+            return UIColor.red
+        default:
+            return UIColor.white
+        }
     }
     
     override func draw(_ rect: CGRect) {
