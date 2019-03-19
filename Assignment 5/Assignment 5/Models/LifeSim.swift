@@ -35,7 +35,7 @@ class LifeSim {
      func toggleStateForXY(x: Int, y: Int){
         if states[x][y] == .Living{
             states[x][y] = .Dead
-        }else{
+        }else if states[x][y] == .Dead{
             states[x][y] = .Living
         }
         //post notification
@@ -58,6 +58,7 @@ class LifeSim {
     }
     func numOfNeighbors(states: [[State]], x: Int, y: Int) -> Int {
         let stateCopy = duplicateBoard()
+        
         var neighbors = 0
         for x1 in x-1...x+1{
             for y1 in x-1...x+1{
@@ -84,22 +85,16 @@ class LifeSim {
   */
     
     func evolveCell(x:Int, y:Int) {
+        
         let neighbors = numOfNeighbors(states: states, x: x, y: y)
+        
         if states[x][y] == .Living && (neighbors < 2 || neighbors > 3){
             toggleStateForXY(x: x, y: y)
         }
-        if states[x][y] == .Dead && neighbors == 3 {
+        else if states[x][y] == .Dead && neighbors == 3 {
             toggleStateForXY(x: x, y: y)
         }
         
-    }
-    
-    func runSim(){
-        if timer == nil{
-            timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (timer) in
-                self.evolveGameBoard()
-            })
-        }
         
     }
     func evolveGameBoard(){
@@ -110,6 +105,16 @@ class LifeSim {
             
         }
     }
+    
+    func runSim(){
+        
+            timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (timer) in
+                self.evolveGameBoard()
+            })
+        
+        
+    }
+
         
     
 }
