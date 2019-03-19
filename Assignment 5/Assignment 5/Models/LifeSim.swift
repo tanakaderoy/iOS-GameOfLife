@@ -44,6 +44,11 @@ class LifeSim {
     }
     
     func runSim(){
+        if timer == nil{
+            timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (timer) in
+                self.evolveCell(x: x, y: y)
+            })
+        }
         
     }
     

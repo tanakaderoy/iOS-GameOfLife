@@ -28,7 +28,10 @@ class ViewController: UIViewController {
         gameBoard.setNeedsDisplay()
     }
     
-
+    @IBAction func statButtonTouched(_ sender: UIButton) {
+        lifesim.runSim()
+    }
+    
 
 }
 
