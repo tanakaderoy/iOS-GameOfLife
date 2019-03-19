@@ -43,15 +43,7 @@ class LifeSim {
         
     }
     
-    func runSim(){
-        if timer == nil{
-            timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (timer) in
-                self.evolveCell(x: x, y: y)
-            })
-        }
-        
-    }
-    
+
     func duplicateBoard() -> [[State]]{
         
         var copy: [[State]] = Array(repeating: Array(repeating: .Dead, count: states.count), count: states.count)
@@ -102,6 +94,22 @@ class LifeSim {
         
     }
     
-    
+    func runSim(){
+        if timer == nil{
+            timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (timer) in
+                self.evolveGameBoard()
+            })
+        }
+        
+    }
+    func evolveGameBoard(){
+        for x in 0 ..< states.count{
+            for y in 0 ..< states.count{
+                self.evolveCell(x: x, y: y)
+            }
+            
+        }
+    }
+        
     
 }
