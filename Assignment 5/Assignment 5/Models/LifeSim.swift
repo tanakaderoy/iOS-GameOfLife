@@ -11,10 +11,12 @@ extension Notification.Name {
     static let dataUpdated = Notification.Name("dataUpdated")
 }
 
+let size = 24
+
 class LifeSim {
+    var timer: Timer?
     
-    
-    var states = [[State]]()
+    var states: [[State]] = Array(repeating: (Array(repeating: .Dead, count: size)), count: size)
     
     private func reset(){
        states = Array(repeating: (Array(repeating: .Dead, count: states.count)), count: states.count)
@@ -37,7 +39,7 @@ class LifeSim {
             states[x][y] = .Living
         }
         //post notification
-        NotificationCenter.post(NotificationCenter)
+        NotificationCenter.default.post(name: .dataUpdated, object: nil)
         
     }
     

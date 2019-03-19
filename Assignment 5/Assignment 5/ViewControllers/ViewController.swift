@@ -11,7 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var gameBoard: GameBoardView!
-    var data = LifeSim()
+    var lifesim = LifeSim()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +25,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     @objc func updateUI() {
-        
+        gameBoard.setNeedsDisplay()
     }
     
 
@@ -34,11 +35,13 @@ class ViewController: UIViewController {
 extension ViewController: GameDelegate, GameDataSource{
     //in future get a data structure looking at each cell and looking to see if each cell hass a organism. on or off
     func colorForCellAtX(_ x: Int, andY y: Int) -> UIColor? {
-        if data.states[x][y] != .Dead {
-            return UIColor.yellow
-        }else{
-            return nil
+        
+        if let state = lifesim.stateForXY(x: x, y: y) {
+            if state == .Living{
+                return UIColor.yellow
+            }
         }
+        return nil
     }
 
     
@@ -46,7 +49,7 @@ extension ViewController: GameDelegate, GameDataSource{
     
     func cellTappedItemAtX(_ x: Int, andY y: Int) {
         print("cell tapped at : (\(x), \(y))")
-        data.toggleStateForXY(x: x, y: y)
+    lifesim.toggleStateForXY(x: x, y: y)
         
         
         
