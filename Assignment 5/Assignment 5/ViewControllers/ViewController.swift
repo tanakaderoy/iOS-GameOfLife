@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         data[23][23] = 1
         data[0][1] = 1
         
+        
         gameBoard.delegate = self
         gameBoard.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.

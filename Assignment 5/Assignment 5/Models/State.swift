@@ -8,10 +8,7 @@
 
 import Foundation
 
-enum State: Int {
-    case Dead = 0, Living
-    
-    
-    
-    
+enum State {
+    case Dead
+    case Living
 }
