@@ -7,6 +7,9 @@
 //
 
 import Foundation
+extension Notification.Name {
+    static let dataUpdated = Notification.Name("dataUpdated")
+}
 
 class LifeSim {
     
@@ -20,20 +23,21 @@ class LifeSim {
         
     }
     
-    private func stateForXY(x: Int, y: Int) -> State? {
+    func stateForXY(x: Int, y: Int) -> State? {
         if (x >= 0 && x < states.count) && (  y >= 0 && y < states.count){
             return states[x][y]
         }else{
             return nil
         }
     }
-    private func toggleStateForXY(x: Int, y: Int){
+     func toggleStateForXY(x: Int, y: Int){
         if states[x][y] == .Living{
             states[x][y] = .Dead
         }else{
             states[x][y] = .Living
         }
         //post notification
+        NotificationCenter.post(NotificationCenter)
         
     }
     

@@ -11,19 +11,20 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var gameBoard: GameBoardView!
-    var data: [[Int]]!
+    var data = LifeSim()
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        data = Array(repeating: (Array(repeating: 0, count: 24)), count: 24)
-        data[0][0] = 1
-        data[23][23] = 1
-        data[0][1] = 1
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: .dataUpdated, object: nil)
+        
         
         
         gameBoard.delegate = self
         gameBoard.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    @objc func updateUI() {
+        
     }
     
 
@@ -33,7 +34,7 @@ class ViewController: UIViewController {
 extension ViewController: GameDelegate, GameDataSource{
     //in future get a data structure looking at each cell and looking to see if each cell hass a organism. on or off
     func colorForCellAtX(_ x: Int, andY y: Int) -> UIColor? {
-        if data[x][y] != 0 {
+        if data.states[x][y] != .Dead {
             return UIColor.yellow
         }else{
             return nil
@@ -45,17 +46,10 @@ extension ViewController: GameDelegate, GameDataSource{
     
     func cellTappedItemAtX(_ x: Int, andY y: Int) {
         print("cell tapped at : (\(x), \(y))")
+        data.toggleStateForXY(x: x, y: y)
         
         
-        if data[x][y] == 0 {
-            data[x][y] = 1
-            
         
-        
-        }else{
-            data[x][y] = 0
-        }
-        gameBoard.setNeedsDisplay()
     
    
     
