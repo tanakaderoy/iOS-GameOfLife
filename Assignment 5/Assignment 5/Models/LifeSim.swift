@@ -13,6 +13,7 @@ extension Notification.Name {
 
 let size = 4
 
+
 class LifeSim {
     var timer: Timer?
     
@@ -124,7 +125,7 @@ class LifeSim {
             
         }
         
-        print(states)
+        print("After loop - \(states)")
     }
     var isRunning: Bool{
         return timer != nil
@@ -132,7 +133,7 @@ class LifeSim {
     
     func runSim(){
         if timer == nil{
-                timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (timer) in
+                timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true, block: { (timer) in
                     self.evolveGameBoard()
             })
         }
