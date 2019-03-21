@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_5" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXa-5Q-2zq">
-                                <rect key="frame" x="193" y="544" width="34" height="30"/>
+                                <rect key="frame" x="190" y="544" width="34" height="30"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="statButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ubv-lW-Bg2"/>
@@ -32,20 +32,33 @@
                                     <constraint firstAttribute="width" secondItem="9aa-Et-FoV" secondAttribute="height" multiplier="1:1" id="eBr-dz-StD"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Hj-WU-aMN">
+                                <rect key="frame" x="181" y="582" width="52" height="30"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H0D-8V-H1J"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="9Hj-WU-aMN" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="187" id="1Dr-8o-R0A"/>
                             <constraint firstItem="9aa-Et-FoV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="3Wn-E2-oGo"/>
-                            <constraint firstItem="fXa-5Q-2zq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="193" id="E5m-xg-Pzb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="fXa-5Q-2zq" secondAttribute="trailing" constant="187" id="PPM-db-GdO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="9Hj-WU-aMN" secondAttribute="trailing" constant="181" id="5lt-7h-4uZ"/>
+                            <constraint firstItem="fXa-5Q-2zq" firstAttribute="top" secondItem="9aa-Et-FoV" secondAttribute="bottom" constant="126" id="8jd-4R-SGu"/>
+                            <constraint firstItem="9Hj-WU-aMN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Ezi-fJ-hZ1"/>
+                            <constraint firstItem="9Hj-WU-aMN" firstAttribute="top" secondItem="fXa-5Q-2zq" secondAttribute="bottom" constant="8" id="KBs-nu-Gcq"/>
+                            <constraint firstItem="fXa-5Q-2zq" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="190" id="YEP-nK-eOm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9aa-Et-FoV" secondAttribute="trailing" constant="20" id="YnM-54-wnr"/>
-                            <constraint firstItem="fXa-5Q-2zq" firstAttribute="top" secondItem="9aa-Et-FoV" secondAttribute="bottom" constant="126" id="lDk-0d-JgE"/>
+                            <constraint firstItem="fXa-5Q-2zq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="jUW-Xg-MZm"/>
                             <constraint firstItem="9aa-Et-FoV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="tRf-ZV-ENR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="fXa-5Q-2zq" secondAttribute="trailing" constant="190" id="z9Y-ML-cIp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="gameBoard" destination="9aa-Et-FoV" id="43a-u8-9jd"/>
+                        <outlet property="resetButton" destination="9Hj-WU-aMN" id="R3H-2b-a9d"/>
                         <outlet property="startStopButton" destination="fXa-5Q-2zq" id="T7a-fl-8w5"/>
                     </connections>
                 </viewController>

@@ -19,8 +19,11 @@ class LifeSim {
     
     var states: [[State]] = Array(repeating: (Array(repeating: .Dead, count: size)), count: size)
     
-    private func reset(){
+    func reset(){
        states = Array(repeating: (Array(repeating: .Dead, count: states.count)), count: states.count)
+        NotificationCenter.default.post(name: .dataUpdated, object: nil)
+        
+        
         
         
         
@@ -117,7 +120,7 @@ class LifeSim {
     }
     func evolveGameBoard(){
         let stateCopy = dupStates()
-        print("Pre loop - \(states)")
+        //print("Pre loop - \(states)")
         for x in 0 ..< states.count{
             for y in 0 ..< states.count{
                 self.evolveCell(x: x, y: y, stateCopy: stateCopy)
@@ -125,7 +128,7 @@ class LifeSim {
             
         }
         
-        print("After loop - \(states)")
+        //print("After loop - \(states)")
     }
     var isRunning: Bool{
         return timer != nil
@@ -133,10 +136,20 @@ class LifeSim {
     
     func runSim(){
         if timer == nil{
-                timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true, block: { (timer) in
+                timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (timer) in
                     self.evolveGameBoard()
             })
         }
+        
+    }
+    func start() {
+        runSim()
+        
+    }
+    
+    func stop(){
+        timer?.invalidate()
+        timer = nil
         
     }
 

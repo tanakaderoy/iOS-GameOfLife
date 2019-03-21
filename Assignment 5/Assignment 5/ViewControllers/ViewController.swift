@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     var lifesim = LifeSim()
     var timer = Timer()
     
+    @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var startStopButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,16 +39,20 @@ class ViewController: UIViewController {
         gameBoard.setNeedsDisplay()
     }
     
+    @IBAction func resetTouched(_ sender: UIButton) {
+        lifesim.reset()
+    }
     @IBAction func statButtonTouched(_ sender: UIButton) {
         if lifesim.isRunning {
             
-            lifesim.timer?.invalidate()
-            lifesim.timer = nil
+            lifesim.stop()
+            updateUI()
         
            
             
         }else{
-            lifesim.runSim()
+            lifesim.start()
+            
             
         }
 
