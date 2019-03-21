@@ -10,7 +10,7 @@ import UIKit
 
 class GameBoardView: UIView {
 
-    let xyGridSize = 4 //numberofcells in vid
+    let xyGridSize = GAME_SIZE //numberofcells in vid
     let gridColor = UIColor.red
     var delegate: GameDelegate?
     var dataSource: GameDataSource?

@@ -11,7 +11,7 @@ extension Notification.Name {
     static let dataUpdated = Notification.Name("dataUpdated")
 }
 
-let size = 4
+let size = GAME_SIZE
 
 
 class LifeSim {
@@ -73,21 +73,20 @@ class LifeSim {
 
     }
     func numOfNeighbors(states: [[State]], x: Int, y: Int) -> Int {
-        let stateCopy = dupStates()
+        
         
         var neighbors = 0
         for x1 in x-1...x+1{
-            for y1 in x-1...x+1{
+            for y1 in y-1...y+1{
                 
                 let checkX = states.torodialIndex(index: (x1))
                 let checkY = states.torodialIndex(index: (y1))
-                if checkX == x1 && checkY == y1{
-                    
-                }else{
-                if stateCopy[x][y] == .Living {
-                    neighbors += 1
-                    
+                if !(checkX == x && checkY == y){
+                    if states[checkX][checkY] == .Living {
+                        neighbors += 1
+                        
                     }
+                    
                 }
             }
         }
@@ -100,9 +99,9 @@ class LifeSim {
     if dead but neighbors == 3 then Alive
   */
     
-    func evolveCell(x:Int, y:Int) {
+    func evolveCell(x:Int, y:Int, stateCopy: [[State]]) {
         
-        let stateCopy = dupStates()
+        
         
         let neighbors = numOfNeighbors(states: stateCopy, x: x, y: y)
         
@@ -117,10 +116,11 @@ class LifeSim {
         
     }
     func evolveGameBoard(){
+        let stateCopy = dupStates()
         print("Pre loop - \(states)")
         for x in 0 ..< states.count{
             for y in 0 ..< states.count{
-                self.evolveCell(x: x, y: y)
+                self.evolveCell(x: x, y: y, stateCopy: stateCopy)
             }
             
         }

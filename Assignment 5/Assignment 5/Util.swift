@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+var GAME_SIZE = 5
 
 extension Array {
     func torodialIndex(index: Int) -> Int{

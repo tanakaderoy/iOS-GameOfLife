@@ -40,6 +40,7 @@ class ViewController: UIViewController {
     
     @IBAction func statButtonTouched(_ sender: UIButton) {
         if lifesim.isRunning {
+            
             lifesim.timer?.invalidate()
             lifesim.timer = nil
         
