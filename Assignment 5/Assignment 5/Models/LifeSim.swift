@@ -11,7 +11,7 @@ extension Notification.Name {
     static let dataUpdated = Notification.Name("dataUpdated")
 }
 
-let size = 24
+let size = 4
 
 class LifeSim {
     var timer: Timer?
@@ -23,6 +23,21 @@ class LifeSim {
         
         
         
+    }
+    
+    
+    private func dupStates() -> [[State]]{
+        
+        var copy: [[State]] = Array(repeating: (Array(repeating: .Dead, count: size)), count: size)
+        
+        for x in 0 ..< states.count {
+            for y in 0 ..< states.count {
+                copy[x][y] = states[x][y]
+            }
+        }
+        
+        return copy
+
     }
     
     func stateForXY(x: Int, y: Int) -> State? {
@@ -57,7 +72,7 @@ class LifeSim {
 
     }
     func numOfNeighbors(states: [[State]], x: Int, y: Int) -> Int {
-        let stateCopy = duplicateBoard()
+        let stateCopy = dupStates()
         
         var neighbors = 0
         for x1 in x-1...x+1{
@@ -86,7 +101,9 @@ class LifeSim {
     
     func evolveCell(x:Int, y:Int) {
         
-        let neighbors = numOfNeighbors(states: states, x: x, y: y)
+        let stateCopy = dupStates()
+        
+        let neighbors = numOfNeighbors(states: stateCopy, x: x, y: y)
         
         if states[x][y] == .Living && (neighbors < 2 || neighbors > 3){
             toggleStateForXY(x: x, y: y)
@@ -96,22 +113,29 @@ class LifeSim {
         }
         
         
+        
     }
     func evolveGameBoard(){
+        print("Pre loop - \(states)")
         for x in 0 ..< states.count{
             for y in 0 ..< states.count{
                 self.evolveCell(x: x, y: y)
             }
             
         }
+        
+        print(states)
+    }
+    var isRunning: Bool{
+        return timer != nil
     }
     
     func runSim(){
-        
-            timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (timer) in
-                self.evolveGameBoard()
+        if timer == nil{
+                timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (timer) in
+                    self.evolveGameBoard()
             })
-        
+        }
         
     }
 

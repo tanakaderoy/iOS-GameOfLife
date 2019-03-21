@@ -12,7 +12,9 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var gameBoard: GameBoardView!
     var lifesim = LifeSim()
+    var timer = Timer()
     
+    @IBOutlet weak var startStopButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,15 +27,26 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     @objc func updateUI() {
+        if lifesim.isRunning{
+            startStopButton.setTitle("Stop", for: .normal)
+            
+        }else{
+            startStopButton.setTitle("Start", for: .normal)
+            
+        }
+    
         gameBoard.setNeedsDisplay()
     }
     
     @IBAction func statButtonTouched(_ sender: UIButton) {
-        lifesim.runSim()
+        
+           
+            lifesim.runSim()
+
     }
     
 
-}
+}//end class
 
 extension ViewController: GameDelegate, GameDataSource{
     //in future get a data structure looking at each cell and looking to see if each cell hass a organism. on or off
